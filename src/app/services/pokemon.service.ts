@@ -15,7 +15,7 @@ export interface PokemonListResponse {
 
 export interface PokemonDetails {
   id: number;
-  name:string;
+  name: string;
   height: number;
   weight: number;
   sprites: {
@@ -53,13 +53,13 @@ export class PokemonService {
 
   constructor(private http: HttpClient) { }
 
-  // Método para buscar a lista de pokémons com paginação
   getPokemonList(offset: number, limit: number): Observable<PokemonListResponse> {
-    return this.http.get<PokemonListResponse>(`<span class="math-inline">\{this\.baseUrl\}/pokemon?offset\=</span>{offset}&limit=${limit}`);
+
+    return this.http.get<PokemonListResponse>(`${this.baseUrl}/pokemon?offset=${offset}&limit=${limit}`);
   }
 
-  // Método para buscar os detalhes de um pokémon pelo nome ou ID
   getPokemonDetails(idOrName: string): Observable<PokemonDetails> {
-    return this.http.get<PokemonDetails>(`<span class="math-inline">\{this\.baseUrl\}/pokemon/</span>{idOrName}`);
+
+    return this.http.get<PokemonDetails>(`${this.baseUrl}/pokemon/${idOrName}`);
   }
 }
