@@ -1,0 +1,33 @@
+// Copiado da Tab1 para manter o estilo dos cards consistente
+ion-card {
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.pokemon-name {
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.empty-state {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--ion-color-medium);
+  text-align: center;
+
+  ion-icon {
+    font-size: 64px;
+    margin-bottom: 16px;
+  }
+
+  p {
+    margin: 0;
+  }
+}

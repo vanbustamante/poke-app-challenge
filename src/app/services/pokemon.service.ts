@@ -18,6 +18,7 @@ export interface PokemonDetails {
   name: string;
   height: number;
   weight: number;
+  species: { url: string; };
   sprites: {
     front_default: string;
     other: {
@@ -61,5 +62,17 @@ export class PokemonService {
   getPokemonDetails(idOrName: string): Observable<PokemonDetails> {
 
     return this.http.get<PokemonDetails>(`${this.baseUrl}/pokemon/${idOrName}`);
+  }
+  
+  getSpecies(url: string): Observable<any> {
+    return this.http.get<any>(url);
+  }
+
+  getType(name: string): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/type/${name}`);
+  }
+
+  getGeneric(url: string): Observable<any> {
+    return this.http.get<any>(url);
   }
 }

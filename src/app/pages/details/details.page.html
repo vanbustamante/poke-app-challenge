@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab1"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ pokemon?.name | titlecase }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="toggleFavorite()">
+        <ion-icon slot="icon-only" [name]="isFavorite ? 'star' : 'star-outline'"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="pokemon">
+    <ion-card-header class="ion-text-center">
+      <img class="detail-image" [src]="pokemon.sprites.other['official-artwork'].front_default" [alt]="pokemon.name">
+      <ion-card-title>{{ pokemon.name | titlecase }}</ion-card-title>
+      <ion-card-subtitle>#{{ pokemon.id }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item lines="none">
+        <ion-label>Tipos</ion-label>
+        <ion-chip *ngFor="let t of pokemon.types" [style.background-color]="getTypeColor(t.type.name)">
+          <ion-label class="chip-label">{{ t.type.name | titlecase }}</ion-label>
+        </ion-chip>
+      </ion-item>
+      <ion-item>
+        <ion-label>Altura</ion-label>
+        <ion-note slot="end">{{ pokemon.height * 10 }} cm</ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-label>Peso</ion-label>
+        <ion-note slot="end">{{ pokemon.weight / 10 }} kg</ion-note>
+      </ion-item>
+      <ion-list-header>Habilidades</ion-list-header>
+      <ion-item *ngFor="let a of pokemon.abilities">
+        <ion-label class="ion-text-wrap">{{ a.ability.name | titlecase }}</ion-label>
+      </ion-item>
+      <ion-list-header>Status Base</ion-list-header>
+      <ion-item *ngFor="let s of pokemon.stats">
+        <ion-label class="ion-text-wrap">{{ s.stat.name | titlecase }}</ion-label>
+        <ion-range [value]="s.base_stat" min="0" max="255" disabled="true"></ion-range>
+        <ion-badge slot="end" color="medium">{{ s.base_stat }}</ion-badge>
+      </ion-item>
+      <ion-list-header>Fraquezas</ion-list-header>
+      <ion-item lines="none">
+        <div class="chip-container">
+          <ion-chip *ngFor="let w of weaknesses" [style.background-color]="getTypeColor(w)">
+            <ion-label class="chip-label">{{ w | titlecase }}</ion-label>
+          </ion-chip>
+        </div>
+      </ion-item>
+
+      <ion-list-header>Cadeia de Evolução</ion-list-header>
+      <ion-item lines="none">
+        <div class="evolution-container">
+          <div *ngFor="let evo of evolutions; let isLast = last" class="evolution-stage">
+            <ion-card class="evolution-card" [routerLink]="['/tabs/tab1/details', evo.id]">
+              <ion-img [src]="'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/' + evo.id + '.png'"></ion-img>
+              <ion-label>{{ evo.name | titlecase }}</ion-label>
+            </ion-card>
+            <ion-icon *ngIf="!isLast" name="arrow-forward-outline" class="evolution-arrow"></ion-icon>
+          </div>
+        </div>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

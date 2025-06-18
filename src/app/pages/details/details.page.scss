@@ -1,0 +1,40 @@
+.detail-image {
+  max-width: 250px; 
+  max-height: 250px;
+  margin: 16px auto;
+  display: block;
+}
+
+.chip-container, .evolution-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.evolution-container {
+  align-items: center;
+}
+
+.evolution-stage {
+  display: flex;
+  align-items: center;
+}
+
+.evolution-card {
+  cursor: pointer;
+  width: 100px;
+  text-align: center;
+  padding: 8px;
+  --background: var(--ion-color-light-tint);
+}
+
+.evolution-arrow {
+  font-size: 24px;
+  margin: 0 8px;
+}
+
+.chip-label {
+  color: #fff; // Força o texto a ser branco
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+}
