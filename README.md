@@ -15,4 +15,8 @@ A interface foi construída com os componentes UI do Ionic, garantindo uma exper
 * Interface responsiva e navegação por Abas.
 * Ícones carregados dinamicamente via `addIcons`.
 
-*(Aqui é um ótimo lugar para adicionar um GIF de demonstração do app!)*
+![Image](https://github.com/user-attachments/assets/e6936566-2016-43bb-957f-4c299fe48416)
+
+![Image](https://github.com/user-attachments/assets/a0306f43-7c78-471c-8a0b-ac8bd1d15327)
+
+Obrigada pela oportunidade de aprender uma ferramenta nova!
